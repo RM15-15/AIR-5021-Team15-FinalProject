@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sgr_waypoint_runner</name>
+  <version>0.0.1</version>
+  <description>Run Sagittarius arm through way‑points listed in a TXT file.</description>
+
+  <maintainer email="">Your Name</maintainer>
+  <license>MIT</license>
+
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>actionlib</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>moveit_commander</exec_depend>
+  <exec_depend>sgr_msgs</exec_depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

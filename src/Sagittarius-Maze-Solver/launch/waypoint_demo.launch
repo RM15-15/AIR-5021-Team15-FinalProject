@@ -1,0 +1,21 @@
+<launch>
+  <!-- 机械臂 & MoveIt 场景 -->
+  <arg name="robot_name" default="sgr532"/>
+  <include file="$(find sagittarius_moveit)/launch/demo_true.launch"/>
+
+  <!-- 动作服务器（保持原样） -->
+  <node pkg="sgr_waypoint_runner" type="sgr_ctrl.py"
+        name="sgr_ctrl_node" output="screen" ns="$(arg robot_name)"/>
+
+  <!-- TXT 路径 & 固定抓取点 -->
+  <arg name="txt_path"  default="$(find sgr_waypoint_runner)/config/points.txt"/>
+  <arg name="pick_pose" default="0.00 -0.20 0.05"/> <!-- x y z -->
+
+  <!-- 执行器 -->
+  <node pkg="sgr_waypoint_runner" type="txt_waypoint_executor.py"
+        name="txt_executor" output="screen">
+    <param name="txt_path" value="$(arg txt_path)"/>
+    <param name="pick_pose" value="$(arg pick_pose)"/>
+    <param name="arm_ns"   value="$(arg robot_name)"/>
+  </node>
+</launch>
